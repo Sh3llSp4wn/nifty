@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "{{REPLACE_project_name}}"
+version = "0.0.1"
+description = ""
+authors = ["shellspawn <shellspawn@protonmail.com>"]
+readme = "README.md"
+packages = [
+         {include = "{{REPLACE_project_name}}"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
