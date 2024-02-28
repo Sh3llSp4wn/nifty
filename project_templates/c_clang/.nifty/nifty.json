@@ -1,0 +1,4 @@
+{
+  "replace": {"project_name": "The project name to use for populating config files and directory names"},
+  "description": "clang project using Makefile to build and unity for tests"
+}

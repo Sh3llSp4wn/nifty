@@ -1,0 +1,4 @@
+{
+  "replace": {"project_name": "The project name to use for populating config files and directory names"},
+  "description": "python project using poetry"
+}
