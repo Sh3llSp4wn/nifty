@@ -8,9 +8,9 @@
 [[./img/nifty.jpeg]]
 ** Project Goals
  Nifty is an extendable template engine without scope creep. It's only goal is to create a standard directory for several project types and use a simple dictionary replacement algorithm to modify file names and simple strings within the files themselves.
- The currently supported projects are in src_sh[:exports code]{project_templates}
+ The currently supported projects are in =project_templates=
 ** Usage
- Usage only has two commands, src_sh[:exports code]{list} and src_sh[:exports code]{create}
+ Usage only has two commands, =list= and =create=
 #+BEGIN_SRC bash
 # list known templates
 nifty list
@@ -18,26 +18,26 @@ nifty list
 # create a project from a known template
 nifty create c_clang output_dir_name
 #+END_SRC
-*** list
+*** =list=
 list the currently avalible project templates
-*** create
+*** =create=
 create a project with the first parameter as project type, and the second parameter the output directory
 nifty will then begin the interview and will populate replace key fields with their values
 ** Extending
  There are two kinds of replacement keys that nifty supports
 1. File replacement keys
-   1. the format is src_sh[:exports code]{REPLACE_key_name}
-   2. This replacement key will change a file name in the project by removing the src_sh[:exports code]{REPLACE_} predicate and replacing src_sh[:exports code]{key_name} with the user specified value
+   1. the format is =REPLACE_key_name=
+   2. This replacement key will change a file name in the project by removing the =REPLACE_= predicate and replacing =key_name= with the user specified value
 2. In-File replacement keys
-   1. the format is src_sh[:exports code]{NIFTY_REPLACE_key_name}
-   2. This replacement key will change the contents of a file in the project by removing the src_sh[:exports code]{NIFTY_REPLACE_} predicate and replacing src_sh[:exports code]{key_name} with the user specified value
- Key names themselves are specified in the src_sh[:exports code]{project_template/project_template_name/.nifty/nifty.json} configuration file
- The following one is the src_sh[:exports code]{nifty.json} from c_clang
+   1. the format is =NIFTY_REPLACE_key_name=
+   2. This replacement key will change the contents of a file in the project by removing the =NIFTY_REPLACE_= predicate and replacing =key_name= with the user specified value
+ Key names themselves are specified in the =project_template/project_template_name/.nifty/nifty.json= configuration file
+ The following one is the =nifty.json= from c_clang
 #+BEGIN_SRC json
 {
   "replace": {"project_name": "The project name to use for populating config files and directory names"},
   "description": "clang project using Makefile to build and unity for tests"
 }
 #+END_SRC
- The src_sh[:exports code]{replace} key in the json should be a table of type src_json[:exports code]{{"key name": "key description",}} the description will be printed to the user during the interview part of project configuration
- The top level src_sh[:exports code]{description} is printed durring the list command
+ The =replace= key in the json should be a table of type ={"key name": "key description",}= the description will be printed to the user during the interview part of project configuration
+ The top level =description= is printed durring the list command
