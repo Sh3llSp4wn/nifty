@@ -1,0 +1,4 @@
+{
+  "replace": {"project_name": "The project name to use for populating config files and directory names"},
+  "description": "ruby gem with spec and bin setup"
+}
