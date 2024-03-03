@@ -9,6 +9,15 @@
 ** Project Goals
  Nifty is an extendable template engine without scope creep. It's only goal is to create a standard directory for several project types and use a simple dictionary replacement algorithm to modify file names and simple strings within the files themselves.
  The currently supported projects are in =project_templates=
+** Installation
+Installation requires copying the data directories to the nifty project_templates directory in the local share and then building and installing the gem
+#+BEGIN_SRC bash
+mkdir ~/.local/share/nifty/
+cp -r project_templates ~/.local/share/nifty/
+
+gem build
+gem install nifty-0.0.1.gem
+#+END_SRC
 ** Usage
  Usage only has two commands, =list= and =create=
 #+BEGIN_SRC bash
