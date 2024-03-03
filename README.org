@@ -28,7 +28,7 @@ nifty list
 nifty create c_clang output_dir_name
 #+END_SRC
 *** =list=
-list the currently avalible project templates
+list the currently available project templates
 *** =create=
 create a project with the first parameter as project type, and the second parameter the output directory
 nifty will then begin the interview and will populate replace key fields with their values
@@ -49,4 +49,6 @@ nifty will then begin the interview and will populate replace key fields with th
 }
 #+END_SRC
  The =replace= key in the json should be a table of type ={"key name": "key description",}= the description will be printed to the user during the interview part of project configuration
- The top level =description= is printed durring the list command
+ The top level =description= is printed during the list command
+** License
+This project uses a testing framework (unity) that is MIT licensed. This component is optional, but the project itself also carries this license.
