@@ -34,7 +34,7 @@ RSpec.describe Nifty::NiftyCore do
       # dork the prints that happen in interview
       allow($stdout).to receive(:write)
       # overwrite gets output with a test string
-      allow(core).to receive(:gets).and_return('AAAAAAAA')
+      allow($stdin).to receive(:gets).and_return('AAAAAAAA')
       # call the test function
       repl = core.interview
       expect(repl).to be_a(Hash)
