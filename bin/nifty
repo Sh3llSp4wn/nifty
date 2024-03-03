@@ -1,5 +1,47 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'dry/cli'
+require 'nifty'
 
+module Nifty
+  module CLI
+    # Commands implements the CLI for nifty
+    module Commands
+      extend Dry::CLI::Registry
 
+      def self.project_temp_dir
+        "#{ENV['HOME']}/.local/share/nifty/project_templates"
+      end
+
+      # list the project templates
+      class List < Dry::CLI::Command
+        desc 'List templates Nifty can create'
+
+        def call(*)
+          Dir.foreach(Commands.project_temp_dir) do |d|
+            puts d unless d.include? '.'
+          end
+        end
+      end
+
+      # create project from template
+      class Create < Dry::CLI::Command
+        desc 'Create a project via selected template'
+
+        argument :proj, type: :string, required: true, desc: 'The project template name'
+        argument :output, type: :string, required: true, desc: 'The output directory for the configured template'
+
+        def call(proj:, output:, **)
+          core = Nifty::NiftyCore.new("#{Commands.project_temp_dir}/#{proj}", output)
+          core.interview
+          core.build_from_template
+        end
+      end
+      register 'list', List
+      register 'create', Create
+    end
+  end
+end
+
+Dry::CLI.new(Nifty::CLI::Commands).call

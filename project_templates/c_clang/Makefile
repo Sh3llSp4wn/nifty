@@ -1,7 +1,7 @@
 CC=clang
 CFLAGS=-Wall -fPIC -ggdb 
 
-TARGET_EXEC := main
+TARGET_EXEC := NIFTY_REPLACE_project_name
 
 BUILD_DIR := ./build
 SRC_DIRS := ./src

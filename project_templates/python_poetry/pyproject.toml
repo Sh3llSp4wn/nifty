@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "{{REPLACE_project_name}}"
+name = "NIFTY_REPLACE_project_name"
 version = "0.0.1"
 description = ""
 authors = ["shellspawn <shellspawn@protonmail.com>"]
 readme = "README.md"
 packages = [
-         {include = "{{REPLACE_project_name}}"},
+         {include = "NIFTY_REPLACE_project_name"},
 ]
 
 [tool.poetry.dependencies]
