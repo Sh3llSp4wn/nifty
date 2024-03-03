@@ -10,7 +10,7 @@ module Nifty
     module Commands
       extend Dry::CLI::Registry
 
-      def self.project_temp_dir
+      def self.project_template_dir
         "#{ENV['HOME']}/.local/share/nifty/project_templates"
       end
 
@@ -19,8 +19,11 @@ module Nifty
         desc 'List templates Nifty can create'
 
         def call(*)
-          Dir.foreach(Commands.project_temp_dir) do |d|
-            puts d unless d.include? '.'
+          Dir.foreach(Commands.project_template_dir) do |d|
+            next if d.include? '.'
+
+            config = Nifty::NiftyCore.project_template_config("#{Commands.project_template_dir}/#{d}")
+            puts "#{d} (#{config['description']})"
           end
         end
       end
@@ -33,7 +36,7 @@ module Nifty
         argument :output, type: :string, required: true, desc: 'The output directory for the configured template'
 
         def call(proj:, output:, **)
-          core = Nifty::NiftyCore.new("#{Commands.project_temp_dir}/#{proj}", output)
+          core = Nifty::NiftyCore.new("#{Commands.project_template_dir}/#{proj}", output)
           core.interview
           core.build_from_template
         end
